@@ -1,8 +1,10 @@
 package rxbus.bus
 
 import rx.Observable
+import rx.Subscription
 import rx.subjects.PublishSubject
 import rx.subjects.SerializedSubject
+import rx.subscriptions.CompositeSubscription
 
 /**
  * Simple Rx Event Bus
@@ -23,4 +25,11 @@ object  Bus {
     inline fun <reified T: Any> observe(): Observable<T> {
         return bus.ofType(T::class.java)
     }
+}
+
+/**
+ * Extension method to add subscription into CompositeSubscription in more convenient way
+ */
+fun Subscription.addTo(compositeSubscription: CompositeSubscription) {
+    compositeSubscription.add(this)
 }
