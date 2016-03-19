@@ -1,4 +1,4 @@
-package rxbus
+package rxbus.bus
 
 import rx.Subscription
 import rx.subscriptions.CompositeSubscription

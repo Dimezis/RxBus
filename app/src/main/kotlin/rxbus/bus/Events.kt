@@ -1,4 +1,4 @@
-package rxbus
+package rxbus.bus
 
 class Events {
     data class ExampleEvent1(var title: String)
