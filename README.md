@@ -8,12 +8,10 @@ Includes small Android example project.
 //subscribe to events
 Bus.observe<ExampleEvent>()
       .subscribe { doSomething() }
-      .registerInBus(this) //registers your subscription to unsubscribe it properly
+      .registerInBus(this) //registers your subscription to unsubscribe it properly later
                 
 //send events
 Bus.send(ExampleEvent(someData))
 
 //unsubscribe from events
-if (Bus.isRegistered(this)) {
-    Bus.unregister(this)
-}
+Bus.unregister(this)
