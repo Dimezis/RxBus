@@ -11,7 +11,7 @@ import java.util.*
 /**
  * Simple Rx Event Bus
  */
-object  Bus {
+object Bus {
     private val TAG = javaClass.simpleName
     /**
      * Avoid using this property directly
