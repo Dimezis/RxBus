@@ -12,7 +12,7 @@ import java.util.*
  */
 object  Bus {
     /**
-     * Avoid using this directly
+     * Avoid using this property directly
      */
     val bus = SerializedSubject(PublishSubject.create<Any>())
 
@@ -31,8 +31,9 @@ object  Bus {
     }
 
     /**
-     * Unregisters subscriber from Bus events
-     * @param subscriber to unregister
+     * Unregisters subscriber from Bus events.
+     * Calls unsubscribe method of your subscriptions
+     * @param subscriber subscriber to unregister
      * @throws RuntimeException if you didn't registered this subscriber
      */
     fun unregister(subscriber: Any) {
@@ -55,7 +56,7 @@ object  Bus {
     /**
      * Registers subscription to correctly unregister it later to avoid memory leaks
      * @param subscription Rx subscription
-     * @param subscriber subscriber that owns this subscription
+     * @param subscriber subscriber object that owns this subscription
      * See also more convenient Subscription.registerInBus(subscriber: Any) extension method
      */
     fun register(subscriber: Any, subscription: Subscription) {
