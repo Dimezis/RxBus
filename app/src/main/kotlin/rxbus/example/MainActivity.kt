@@ -32,7 +32,8 @@ class MainActivity : BaseActivity() {
 
     private fun subscribeToExampleEvents() {
         Bus.observe<Events.ExampleEvent1>()
-                .subscribe { textView.text = it.title }
+                .map { "Modified ${it.title}"} //you can use any Rx operator to modify event data
+                .subscribe { textView.text = it }
                 .registerInBus(this)
 
         Bus.observe<Events.ExampleEvent2>()
