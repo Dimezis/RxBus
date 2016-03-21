@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RxBus</string>
+    <string name="event_1">Event 1</string>
+    <string name="event_2">Event 2</string>
 </resources>
