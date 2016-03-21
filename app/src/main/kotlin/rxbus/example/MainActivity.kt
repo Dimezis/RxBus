@@ -39,5 +39,13 @@ class MainActivity : BaseActivity() {
                 .observeOn(AndroidSchedulers.mainThread()) //optional, if you need to receive event in main thread
                 .subscribe { textView.text = "ExampleEvent2 sent ${it.count} times" }
                 .registerInBus(this)
+
+        //if you want to manage each of your subscriptions separately, you can store them locally
+        var notRegisteredSubscription = Bus.observe<Events.ExampleEvent1>()
+                .subscribe { textView.text = it.title }
+                //here we don't call registerInBus(this)
+
+        //... somewhere later, unsubscribe when you need
+        notRegisteredSubscription.unsubscribe()
     }
 }
