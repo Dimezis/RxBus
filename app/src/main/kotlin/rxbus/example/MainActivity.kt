@@ -1,12 +1,11 @@
-package rxbus
+package rxbus.example
 
 import android.os.Bundle
 import eightbitlab.com.rxbus.R
 import kotlinx.android.synthetic.main.activity_main.*
 import rx.android.schedulers.AndroidSchedulers
-import rxbus.bus.Bus
-import rxbus.bus.Events
-import rxbus.bus.addTo
+import rxbus.Bus
+import rxbus.registerInBus
 
 class MainActivity : BaseActivity() {
 
@@ -34,11 +33,11 @@ class MainActivity : BaseActivity() {
     private fun subscribeToExampleEvents() {
         Bus.observe<Events.ExampleEvent1>()
                 .subscribe { textView.text = it.title }
-                .addTo(compositeSubscription)
+                .registerInBus(this)
 
         Bus.observe<Events.ExampleEvent2>()
                 .observeOn(AndroidSchedulers.mainThread()) //optional, if you need to receive event in main thread
                 .subscribe { textView.text = "ExampleEvent2 sent ${it.count} times" }
-                .addTo(compositeSubscription)
+                .registerInBus(this)
     }
 }
