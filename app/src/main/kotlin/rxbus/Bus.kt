@@ -1,5 +1,6 @@
 package rxbus
 
+import android.util.Log
 import rx.Observable
 import rx.Subscription
 import rx.subjects.PublishSubject
@@ -11,6 +12,7 @@ import java.util.*
  * Simple Rx Event Bus
  */
 object  Bus {
+    private val TAG = javaClass.simpleName
     /**
      * Avoid using this property directly
      */
@@ -39,7 +41,7 @@ object  Bus {
     fun unregister(subscriber: Any) {
         var compositeSubscription = subscriptionsMap[subscriber]
         if (compositeSubscription == null) {
-            throw RuntimeException("Subscriber is not registered")
+            Log.w(TAG, "Trying to unregister subscriber that wasn't registered")
         } else {
             compositeSubscription.clear()
             subscriptionsMap[subscriber] = null
