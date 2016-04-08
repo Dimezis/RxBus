@@ -44,7 +44,7 @@ object Bus {
             Log.w(TAG, "Trying to unregister subscriber that wasn't registered")
         } else {
             compositeSubscription.clear()
-            subscriptionsMap[subscriber] = null
+            subscriptionsMap.remove(subscriber)
         }
     }
 
