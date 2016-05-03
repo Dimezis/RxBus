@@ -1,4 +1,4 @@
-package rxbus
+package com.eightbitlab.rxbus
 
 import android.util.Log
 import rx.Observable
@@ -36,7 +36,6 @@ object Bus {
      * Unregisters subscriber from Bus events.
      * Calls unsubscribe method of your subscriptions
      * @param subscriber subscriber to unregister
-     * @throws RuntimeException if you didn't registered this subscriber
      */
     fun unregister(subscriber: Any) {
         var compositeSubscription = subscriptionsMap[subscriber]

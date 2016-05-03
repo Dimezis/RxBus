@@ -1,11 +1,10 @@
 package rxbus.example
 
 import android.os.Bundle
-import eightbitlab.com.rxbus.R
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import kotlinx.android.synthetic.main.activity_main.*
 import rx.android.schedulers.AndroidSchedulers
-import rxbus.Bus
-import rxbus.registerInBus
 
 class MainActivity : BaseActivity() {
 
