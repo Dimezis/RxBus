@@ -13,17 +13,17 @@
     tools:context="rxbus.example.MainActivity">
 
     <Button
-        android:id="@+id/buttonEvent1"
+        android:id="@+id/buttonTextEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:text="@string/event_1"/>
 
     <Button
-        android:id="@+id/buttonEvent2"
+        android:id="@+id/buttonCounterEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:text="@string/event_2"/>
 
     <TextView
@@ -31,5 +31,5 @@
         android:text="Hello World!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"/>
+        android:layout_margin="@dimen/activity_vertical_margin"/>
 </LinearLayout>
