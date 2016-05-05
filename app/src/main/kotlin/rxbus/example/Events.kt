@@ -1,7 +1,7 @@
 package rxbus.example
 
 class Events {
-    data class ExampleEvent1(var title: String)
+    data class TextEvent(var title: String)
 
-    data class ExampleEvent2(var count: Int)
+    data class CounterEvent(var count: Int)
 }
