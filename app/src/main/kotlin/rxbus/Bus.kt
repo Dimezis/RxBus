@@ -13,8 +13,17 @@ import java.util.*
  */
 object Bus {
     private val TAG = javaClass.simpleName
+
     /**
-     * Avoid using this property directly
+     * Used to hold all subscriptions to Bus events and unsubscribe properly when needed.
+     * Please always unsubscribe (use unregister method) to avoid memory leaks
+     */
+    private val subscriptionsMap: HashMap<Any, CompositeSubscription?> by lazy {
+        HashMap<Any, CompositeSubscription?>()
+    }
+
+    /**
+     * Avoid using this property directly, exposed only because it's used in inline fun
      */
     val bus = SerializedSubject(PublishSubject.create<Any>())
 
@@ -48,20 +57,8 @@ object Bus {
         }
     }
 
-    /**
-     * @return true if subscriber is registered, false otherwise
-     */
-    fun isRegistered(subscriber: Any): Boolean {
-        return subscriptionsMap[subscriber] != null
-    }
 
-    /**
-     * Registers subscription to correctly unregister it later to avoid memory leaks
-     * @param subscription Rx subscription
-     * @param subscriber subscriber object that owns this subscription
-     * See also more convenient Subscription.registerInBus(subscriber: Any) extension method
-     */
-    fun register(subscriber: Any, subscription: Subscription) {
+    private fun register(subscriber: Any, subscription: Subscription) {
         var compositeSubscription = subscriptionsMap[subscriber]
         if (compositeSubscription == null) {
             compositeSubscription = CompositeSubscription()
@@ -69,19 +66,12 @@ object Bus {
         compositeSubscription.add(subscription)
         subscriptionsMap[subscriber] = compositeSubscription
     }
-}
 
-/**
- * Used to hold all subscriptions to Bus events and unsubscribe properly when needed.
- * Please always unsubscribe (use unregister method) to avoid memory leaks
- */
-private val subscriptionsMap: HashMap<Any, CompositeSubscription?> by lazy {
-    HashMap<Any, CompositeSubscription?>()
-}
-
-/**
- * Extension method to register subscription in Bus in more convenient way
- */
-fun Subscription.registerInBus(subscriber: Any) {
-    Bus.register(subscriber, this)
+    /**
+     * Registers the subscription to correctly unregister it later to avoid memory leaks
+     * @param subscriber subscriber object that owns this subscription
+     */
+    fun Subscription.registerInBus(subscriber: Any) {
+        Bus.register(subscriber, this)
+    }
 }

@@ -5,7 +5,7 @@ import eightbitlab.com.rxbus.R
 import kotlinx.android.synthetic.main.activity_main.*
 import rx.android.schedulers.AndroidSchedulers
 import rxbus.Bus
-import rxbus.registerInBus
+import rxbus.Bus.registerInBus
 
 class MainActivity : BaseActivity() {
 
