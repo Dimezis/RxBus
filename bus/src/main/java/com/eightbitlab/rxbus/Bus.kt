@@ -56,7 +56,6 @@ object Bus {
         }
     }
 
-
     private fun register(subscriber: Any, subscription: Subscription) {
         var compositeSubscription = subscriptionsMap[subscriber]
         if (compositeSubscription == null) {
