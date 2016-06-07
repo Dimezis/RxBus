@@ -15,8 +15,7 @@ object Bus {
     private val TAG = javaClass.simpleName
 
     /**
-     * Used to hold all subscriptions to Bus events and unsubscribe properly when needed.
-     * Please always unsubscribe (use unregister method) to avoid memory leaks
+     * Used to hold all subscriptions for Bus events and unsubscribe properly when needed.
      */
     private val subscriptionsMap: HashMap<Any, CompositeSubscription?> by lazy {
         HashMap<Any, CompositeSubscription?>()
