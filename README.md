@@ -15,7 +15,7 @@ Bus.send(ExampleEvent(someData))
 
 //unsubscribe from events
 Bus.unregister(this)
-
+```
 
 License
 -------
