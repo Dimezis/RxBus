@@ -17,6 +17,11 @@ Bus.send(ExampleEvent(someData))
 Bus.unregister(this)
 ```
 
+##Gradle
+```Groovy
+compile 'com.eightbitlab:rxbus:1.0'
+```
+
 License
 -------
 
