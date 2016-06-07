@@ -46,7 +46,7 @@ object Bus {
      * @param subscriber subscriber to unregister
      */
     fun unregister(subscriber: Any) {
-        var compositeSubscription = subscriptionsMap[subscriber]
+        val compositeSubscription = subscriptionsMap[subscriber]
         if (compositeSubscription == null) {
             Log.w(TAG, "Trying to unregister subscriber that wasn't registered")
         } else {
