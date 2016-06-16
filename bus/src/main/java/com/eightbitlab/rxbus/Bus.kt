@@ -36,7 +36,7 @@ object Bus {
     /**
      * Subscribes for events of certain type T. Can be called from any thread
      */
-    inline fun <reified T: Any> observe(): Observable<T> {
+    inline fun <reified T : Any> observe(): Observable<T> {
         return bus.ofType(T::class.java)
     }
 
@@ -55,7 +55,7 @@ object Bus {
         }
     }
 
-    private fun register(subscriber: Any, subscription: Subscription) {
+    internal fun register(subscriber: Any, subscription: Subscription) {
         var compositeSubscription = subscriptionsMap[subscriber]
         if (compositeSubscription == null) {
             compositeSubscription = CompositeSubscription()
@@ -68,7 +68,8 @@ object Bus {
      * Registers the subscription to correctly unregister it later to avoid memory leaks
      * @param subscriber subscriber object that owns this subscription
      */
-    fun Subscription.registerInBus(subscriber: Any) {
-        Bus.register(subscriber, this)
-    }
+}
+
+fun Subscription.registerInBus(subscriber: Any) {
+    Bus.register(subscriber, this)
 }
