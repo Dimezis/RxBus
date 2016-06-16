@@ -19,7 +19,7 @@ Bus.unregister(this)
 
 ##Gradle
 ```Groovy
-compile 'com.eightbitlab:rxbus:1.0'
+compile 'com.eightbitlab:rxbus:1.0.1'
 ```
 
 License
