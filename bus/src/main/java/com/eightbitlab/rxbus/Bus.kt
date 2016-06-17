@@ -63,13 +63,12 @@ object Bus {
         compositeSubscription.add(subscription)
         subscriptionsMap[subscriber] = compositeSubscription
     }
-
-    /**
-     * Registers the subscription to correctly unregister it later to avoid memory leaks
-     * @param subscriber subscriber object that owns this subscription
-     */
 }
 
+/**
+ * Registers the subscription to correctly unregister it later to avoid memory leaks
+ * @param subscriber subscriber object that owns this subscription
+ */
 fun Subscription.registerInBus(subscriber: Any) {
     Bus.register(subscriber, this)
 }
