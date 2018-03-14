@@ -3,6 +3,8 @@
 This is a simple Rx Event Bus implementation using Kotlin.
 Includes small Android example project.
 
+You should think twice though before using an event bus in project, it might create a complicated data flow in your app and a nightmare for debugging later.
+
 ## How to use
 ```kotlin
 //subscribe to events
