@@ -1,9 +1,10 @@
-# RxBus
+# RxBus [Deprecated]
 
 This is a simple Rx Event Bus implementation using Kotlin.
 Includes small Android example project.
 
-You should think twice though before using an event bus in project, it might create a complicated data flow in your app and a nightmare for debugging later.
+You should think twice though before using an event bus in project, it might create a complicated data flow in your app and a nightmare for debugging later. 
+Also Rx is already providing you all event bus capabilities, but offer more control over data flow and scope.
 
 ## How to use
 ```kotlin
